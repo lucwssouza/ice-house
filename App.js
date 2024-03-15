@@ -15,6 +15,7 @@ export default function App() {
           <Image
             style={styles.menuIcon}
             source={require("./assets/menu-icon.png")}
+
           />
         </TouchableOpacity>
         <Image
