@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, Button, Alert } from 'react-native';
+import styles from './estilo/style.js';
 
 export default function App() {
   const [showMenu, setShowMenu] = useState(false);
@@ -15,7 +16,6 @@ export default function App() {
           <Image
             style={styles.menuIcon}
             source={require("./assets/menu-icon.png")}
-
           />
         </TouchableOpacity>
         <Image
@@ -27,67 +27,84 @@ export default function App() {
           source={require("./assets/carrinho.png")}
         />
       </View>
-      {showMenu && (
-        <View style={styles.menu}>
-          <Text style={styles.menuItem}>Minha conta</Text>
-          <Text style={styles.menuItem}>Meus pedidos</Text>
-          <Text style={styles.menuItem}>Gelos</Text>
-          <Text style={styles.menuItemFinal}>Contato</Text>
+      <View style={styles.headerbar}>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite o que você procura"
+          keyboardType="numeric"
+        />
+      </View>
+      <Text style={styles.h1}>Gelos</Text>
+      <View style={styles.menucard}>
+        <View style={styles.containerProduct}>
+          <Image
+            style={{ height: 140, width: 110 }}
+            source={require("./assets/saco-de-gelo.png")}
+          />
+          <Text>Saco de gelo</Text>
+          <Text style={styles.price}>R$ 10,00</Text>
+          <Button
+            style={styles.button}
+            title="Comprar"
+            onPress={() => Alert.alert('Produto adicionado ao carrinho')}
+          />
         </View>
-      )}
-    </View>
+        <View style={styles.containerProduct}>
+          <Image
+            style={{ height: 140, width: 110 }}
+            source={require("./assets/gelorigido.jpg")}
+          />
+          <Text>Gelo gel artificial</Text>
+          <Text style={styles.price}>R$ 10,00</Text>
+          <Button
+            style={styles.button}
+            title="Comprar"
+            onPress={() => Alert.alert('Produto adicionado ao carrinho')}
+          />
+        </View>
+      </View>
+      <View style={styles.menucard}>
+        <View style={styles.containerProduct}>
+          <Image
+            style={{ height: 140, width: 110 }}
+            source={require("./assets/geloartificial.webp")}
+          />
+          <Text>Gelo Artificial</Text>
+          <Text style={styles.price}>R$ 10,00</Text>
+          <Button
+            style={styles.button}
+            title="Comprar"
+            onPress={() => Alert.alert('Produto adicionado ao carrinho')}
+          />
+        </View>
+        <View style={styles.containerProduct}>
+          <Image
+            style={{ height: 140, width: 110 }}
+            source={require("./assets/kitgelo.webp")}
+          />
+          <Text>Kit gelo/50 uni</Text>
+          <Text style={styles.price}>R$ 10,00</Text>
+          <Button
+            style={styles.button}
+            title="Comprar"
+            onPress={() => Alert.alert('Produto adicionado ao carrinho')}
+          />
+        </View>
+      </View>
+
+      {
+        showMenu && (
+          <View style={styles.menu}>
+            <Text style={styles.menuItem}>Minha conta</Text>
+            <Text style={styles.menuItem}>Meus pedidos</Text>
+            <Text style={styles.menuItem}>Gelos</Text>
+            <Text style={styles.menuItemFinal}>Contato</Text>
+          </View>
+
+        )
+      }
+    </View >
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  header: {
-    backgroundColor: '#72C9F5',
-    width: '100%',
-    height: 70,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 10,
-    position: 'absolute',
-    top: 0
-  },
-  menuIcon: {
-    width: 40,
-    height: 40,
-    tintColor: 'white',
-  },
-  headerlogo: {
-    width: 160,
-    height: 40,
-    tintColor: 'white',
-  },
-  carrinho: {
-    width: 40,
-    height: 40,
-    tintColor: 'white',
-  },
-  menu: {
-    position: 'absolute',
-    top: 60,
-    backgroundColor: '#72C9F5',
-    width: '100%',
-    padding: 10,
-  },
-  menuItem: {
-    color: 'white',
-    fontSize: 17,
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  menuItemFinal: {
-    color: 'white',
-    fontSize: 17,
-  },
-});
+
